@@ -24,6 +24,9 @@ services:
       - NEO4J_USER=${NEO4J_USER}
       - NEO4J_PASSWORD=${NEO4J_PASSWORD}
       - PORT=8000
+    env_file:
+      - .env  # AÑADE ESTA LÍNEA
+
   neo4j:
     image: neo4j:5.26.2
     healthcheck:
@@ -43,6 +46,8 @@ services:
       - neo4j_data:/data
     environment:
       - NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD}
+    env_file:
+      - .env  # AÑADE ESTA LÍNEA
 
 volumes:
   neo4j_data:
